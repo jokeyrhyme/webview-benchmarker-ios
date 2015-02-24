@@ -23,5 +23,11 @@ class KangaxES6: Benchmark {
         var result: String = self.webView.stringByEvaluatingJavaScriptFromString(script)!
         return result
     }
-    
+
+    override func isComplete() -> Bool {
+        var script: String = "'' + Array.prototype.slice.call(document.querySelectorAll('td.current')).every(function (td) { return td.className.indexOf('no') !== -1 || td.className.indexOf('yes') !== -1 || td.className.indexOf('tally') !== -1 })"
+        var result: String = self.webView.stringByEvaluatingJavaScriptFromString(script)!
+        return result == "true"
+    }
+
 }
