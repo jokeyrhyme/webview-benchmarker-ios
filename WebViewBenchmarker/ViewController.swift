@@ -58,7 +58,7 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
     }
     
     func benchmarkDidSucceed(benchmark: Benchmark) {
-        println("benchmarkDidSucceed")
+        //println("benchmarkDidSucceed")
         println("benchmark result: " + benchmark.result)
         self.nextBenchmark()
     }

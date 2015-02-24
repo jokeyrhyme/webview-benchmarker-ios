@@ -46,28 +46,28 @@ class Benchmark: NSObject, UIWebViewDelegate {
 
     func webViewDidFinishLoad(webView: UIWebView) {
         println("webViewDidFinishLoad")
-        whenComplete(10 * NSEC_PER_SEC)
+        self.pollUntil(self.isComplete, done: self.didComplete, timeout: 10 * NSEC_PER_SEC)
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-        println("webViewDidStartLoad")
+        //println("webViewDidStartLoad")
     }
     
-    func didSucceed() {
-        self.result = self.extractResult()
-        if (self.delegate != nil) {
-            self.delegate!.benchmarkDidSucceed(self)
-        }
-    }
-    
-    func didFail() {
-        if (self.delegate != nil) {
-            self.delegate!.benchmarkDidFail(self)
+    func didComplete(err: NSError?) {
+        if (err != nil) {
+            if (self.delegate != nil) {
+                self.delegate!.benchmarkDidFail(self)
+            }
+        } else {
+            self.result = self.extractResult()
+            if (self.delegate != nil) {
+                self.delegate!.benchmarkDidSucceed(self)
+            }
         }
     }
     
     // http://stackoverflow.com/questions/25951980/swift-do-something-every-x-minutes
-    private func whenComplete(timeout: UInt64) {
+    private func pollUntil(check: (() -> Bool), done: ((err: NSError?) -> Void), timeout: UInt64) {
         let queue = dispatch_get_main_queue()
         let timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue)
         let delay: UInt64 = 1 * NSEC_PER_SEC
@@ -79,12 +79,12 @@ class Benchmark: NSObject, UIWebViewDelegate {
             elapsed = elapsed + delay
             if (elapsed >= timeout) {
                 dispatch_source_cancel(timer)
-                self.didFail()
+                done(err: NSError(domain: "pollUntil", code: 1, userInfo: NSDictionary()))
             }
-            var result: Bool = self.isComplete()
+            var result: Bool = check()
             if (result) {
                 dispatch_source_cancel(timer)
-                self.didSucceed()
+                done(err: nil)
             }
         }
         dispatch_resume(timer)
