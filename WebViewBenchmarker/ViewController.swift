@@ -9,9 +9,11 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
-    //@IBOutlet var containerView: UIView = nil
+class ViewController: UIViewController, UIWebViewDelegate {
+    @IBOutlet var containerView: UIView? = nil
     @IBOutlet var webView: UIWebView?
+    
+    var benchmark: Benchmark?
     
     override func loadView() {
         super.loadView()
@@ -22,10 +24,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var url = NSURL(string: "https://google.com/")
-        var request = NSURLRequest(URL: url!)
-        self.webView!.loadRequest(request)
+        
+        self.benchmark = Benchmark(webView: self.webView!)
+        self.webView!.delegate = self
+        self.benchmark!.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +35,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        return self.benchmark!.webView(webView, shouldStartLoadWithRequest: request, navigationType: navigationType)
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        return self.benchmark!.webView(webView, didFailLoadWithError: error)
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        return self.benchmark!.webViewDidFinishLoad(webView)
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        return self.benchmark!.webViewDidStartLoad(webView)
+    }
 
 }
 
