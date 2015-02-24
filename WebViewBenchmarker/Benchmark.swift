@@ -54,7 +54,6 @@ class Benchmark: NSObject, UIWebViewDelegate {
     }
     
     func didSucceed() {
-        println("didSucceed")
         self.result = self.extractResult()
         if (self.delegate != nil) {
             self.delegate!.benchmarkDidSucceed(self)
@@ -62,7 +61,6 @@ class Benchmark: NSObject, UIWebViewDelegate {
     }
     
     func didFail() {
-        println("didFail")
         if (self.delegate != nil) {
             self.delegate!.benchmarkDidFail(self)
         }

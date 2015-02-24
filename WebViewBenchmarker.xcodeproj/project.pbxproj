@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E4442EC31A9C2A3800859F8F /* CSS3Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4442EC21A9C2A3800859F8F /* CSS3Test.swift */; };
+		E453A7841A9C3A08003A6742 /* KangaxES6.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A7831A9C3A08003A6742 /* KangaxES6.swift */; };
+		E453A7861A9C3E66003A6742 /* KangaxES7.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A7851A9C3E66003A6742 /* KangaxES7.swift */; };
 		E49F98BC1A9BFBBC005A168A /* HTML5Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */; };
 		E4AA35021A9AC02500FD0D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA35011A9AC02500FD0D90 /* AppDelegate.swift */; };
 		E4AA35041A9AC02500FD0D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA35031A9AC02500FD0D90 /* ViewController.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		E4442EC21A9C2A3800859F8F /* CSS3Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSS3Test.swift; sourceTree = "<group>"; };
+		E453A7831A9C3A08003A6742 /* KangaxES6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KangaxES6.swift; sourceTree = "<group>"; };
+		E453A7851A9C3E66003A6742 /* KangaxES7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KangaxES7.swift; sourceTree = "<group>"; };
 		E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTML5Test.swift; sourceTree = "<group>"; };
 		E4AA34FC1A9AC02500FD0D90 /* WebViewBenchmarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewBenchmarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AA35001A9AC02500FD0D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 			children = (
 				E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */,
 				E4442EC21A9C2A3800859F8F /* CSS3Test.swift */,
+				E453A7831A9C3A08003A6742 /* KangaxES6.swift */,
+				E453A7851A9C3E66003A6742 /* KangaxES7.swift */,
 			);
 			path = Benchmarks;
 			sourceTree = "<group>";
@@ -229,7 +235,9 @@
 				E4AA35041A9AC02500FD0D90 /* ViewController.swift in Sources */,
 				E4AA35221A9AC91000FD0D90 /* Benchmark.swift in Sources */,
 				E4AA35021A9AC02500FD0D90 /* AppDelegate.swift in Sources */,
+				E453A7841A9C3A08003A6742 /* KangaxES6.swift in Sources */,
 				E4442EC31A9C2A3800859F8F /* CSS3Test.swift in Sources */,
+				E453A7861A9C3E66003A6742 /* KangaxES7.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

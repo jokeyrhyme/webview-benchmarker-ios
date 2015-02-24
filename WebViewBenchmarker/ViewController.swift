@@ -15,7 +15,9 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
     
     var benchmarks: [Benchmark] = [
         HTML5Test(),
-        CSS3Test()
+        CSS3Test(),
+        KangaxES6(),
+        KangaxES7()
     ]
     var benchmark: Benchmark? = nil
     
