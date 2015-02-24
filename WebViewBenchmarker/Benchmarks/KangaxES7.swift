@@ -11,7 +11,7 @@ import WebKit
 
 class KangaxES7: KangaxES6 {
     
-    override func start() {
+    override func load() {
         var url: String = "http://kangax.github.io/compat-table/es7/"
         println(url)
         var request = NSURLRequest(URL: NSURL(string: url)!)

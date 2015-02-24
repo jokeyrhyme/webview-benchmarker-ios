@@ -17,7 +17,8 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
         HTML5Test(),
         CSS3Test(),
         KangaxES6(),
-        KangaxES7()
+        KangaxES7(),
+        Octane()
     ]
     var benchmark: Benchmark? = nil
     
@@ -102,7 +103,7 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
         
         benchmark.delegate = self
         benchmark.webView.delegate = self
-        benchmark.start()
+        benchmark.load()
     }
 
 }

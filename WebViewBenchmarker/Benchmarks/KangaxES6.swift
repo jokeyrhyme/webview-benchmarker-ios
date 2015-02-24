@@ -11,7 +11,7 @@ import WebKit
 
 class KangaxES6: Benchmark {
     
-    override func start() {
+    override func load() {
         var url: String = "http://kangax.github.io/compat-table/es6/"
         println(url)
         var request = NSURLRequest(URL: NSURL(string: url)!)

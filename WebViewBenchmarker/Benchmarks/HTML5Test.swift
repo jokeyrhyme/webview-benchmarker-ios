@@ -11,7 +11,7 @@ import WebKit
 
 class HTML5Test: Benchmark {
 
-    override func start() {
+    override func load() {
         var url: String = "http://html5test.com/"
         println(url)
         var request = NSURLRequest(URL: NSURL(string: url)!)

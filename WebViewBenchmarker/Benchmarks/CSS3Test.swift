@@ -11,7 +11,7 @@ import WebKit
 
 class CSS3Test: Benchmark {
     
-    override func start() {
+    override func load() {
         var url: String = "http://css3test.com/"
         println(url)
         var request = NSURLRequest(URL: NSURL(string: url)!)
