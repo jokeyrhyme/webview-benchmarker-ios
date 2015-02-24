@@ -11,12 +11,12 @@ import UIKit
 import WebKit
 
 class Benchmark: NSObject, UIWebViewDelegate {
-    private var webView: UIWebView
+    var webView: UIWebView
     var result: String = ""
     var delegate: BenchmarkDelegate? = nil
     
-    init(webView: UIWebView) {
-        self.webView = webView
+    override init() {
+        self.webView = UIWebView()
     }
     
     func start() {
@@ -33,15 +33,10 @@ class Benchmark: NSObject, UIWebViewDelegate {
     
     func isComplete() -> Bool {
         var result: String = self.extractResult()
-        if (~result.isEmpty) {
-            self.result = result
-            return true
-        }
-        return false
+        return ~result.isEmpty
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        println("shouldStartLoadWithRequest")
         return true
     }
     
@@ -60,6 +55,7 @@ class Benchmark: NSObject, UIWebViewDelegate {
     
     func didSucceed() {
         println("didSucceed")
+        self.result = self.extractResult()
         if (self.delegate != nil) {
             self.delegate!.benchmarkDidSucceed(self)
         }

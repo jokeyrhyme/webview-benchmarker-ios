@@ -11,15 +11,8 @@ import WebKit
 
 class HTML5Test: Benchmark {
 
-    private var webView: UIWebView
-    
-    override init(webView: UIWebView) {
-        self.webView = webView
-        super.init(webView: webView)
-    }
-    
     override func start() {
-        var url: String = "https://html5test.com/"
+        var url: String = "http://html5test.com/"
         var request = NSURLRequest(URL: NSURL(string: url)!)
         self.webView.loadRequest(request)
     }
@@ -32,11 +25,7 @@ class HTML5Test: Benchmark {
 
     override func isComplete() -> Bool {
         var result: String = self.extractResult()
-        if (~result.isEmpty) {
-            self.result = result
-            return true
-        }
-        return false
+        return ~result.isEmpty
     }
 
     

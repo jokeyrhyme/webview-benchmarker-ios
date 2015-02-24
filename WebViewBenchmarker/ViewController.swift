@@ -13,22 +13,20 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
     @IBOutlet var containerView: UIView? = nil
     @IBOutlet var webView: UIWebView?
     
-    var benchmark: Benchmark?
+    var benchmarks: [Benchmark] = [
+        HTML5Test(),
+        CSS3Test()
+    ]
+    var benchmark: Benchmark? = nil
     
     override func loadView() {
         super.loadView()
-        
-        self.webView = UIWebView()
-        self.view = self.webView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.benchmark = HTML5Test(webView: self.webView!)
-        self.benchmark!.delegate = self
-        self.webView!.delegate = self
-        self.benchmark!.start()
+        nextBenchmark()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,11 +52,55 @@ class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
     
     func benchmarkDidFail(benchmark: Benchmark) {
         println("benchmarkDidFail")
+        self.nextBenchmark()
     }
     
     func benchmarkDidSucceed(benchmark: Benchmark) {
         println("benchmarkDidSucceed")
         println("benchmark result: " + benchmark.result)
+        self.nextBenchmark()
+    }
+    
+    func destroyBenchmark() {
+        if (self.benchmark != nil) {
+            self.benchmark!.delegate = nil
+            self.benchmark!.webView.delegate = nil
+            self.benchmark = nil
+        }
+    }
+    
+    func nextBenchmark() {
+        var previous: Benchmark? = nil
+        if (self.benchmark != nil) {
+            previous = self.benchmark!
+        }
+        
+        destroyBenchmark()
+        
+        var benchmark: Benchmark
+        if (previous == nil) {
+            benchmark = benchmarks[0]
+        } else {
+            var index = find(self.benchmarks, previous!)
+            if (index == nil) {
+                println("unknown benchmark somehow !?!")
+                return
+            }
+            if (previous != self.benchmarks.last) {
+                benchmark = self.benchmarks[index! + 1]
+            } else {
+                println("all done!")
+                return
+            }
+        }
+        
+        self.benchmark = benchmark
+        
+        self.view = benchmark.webView
+        
+        benchmark.delegate = self
+        benchmark.webView.delegate = self
+        benchmark.start()
     }
 
 }
