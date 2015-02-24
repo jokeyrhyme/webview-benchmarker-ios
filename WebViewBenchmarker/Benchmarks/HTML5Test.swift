@@ -24,10 +24,19 @@ class HTML5Test: Benchmark {
         self.webView.loadRequest(request)
     }
     
-    override func isComplete() {
+    override func extractResult() -> String {
         var script: String = "document.querySelector('.pointsPanel h2 strong').textContent"
         var result: String = self.webView.stringByEvaluatingJavaScriptFromString(script)!
-        println(result)
+        return result
+    }
+
+    override func isComplete() -> Bool {
+        var result: String = self.extractResult()
+        if (~result.isEmpty) {
+            self.result = result
+            return true
+        }
+        return false
     }
 
     

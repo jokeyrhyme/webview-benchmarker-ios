@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, UIWebViewDelegate {
+class ViewController: UIViewController, UIWebViewDelegate, BenchmarkDelegate {
     @IBOutlet var containerView: UIView? = nil
     @IBOutlet var webView: UIWebView?
     
@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         self.benchmark = HTML5Test(webView: self.webView!)
+        self.benchmark!.delegate = self
         self.webView!.delegate = self
         self.benchmark!.start()
     }
@@ -49,6 +50,15 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(webView: UIWebView) {
         return self.benchmark!.webViewDidStartLoad(webView)
+    }
+    
+    func benchmarkDidFail(benchmark: Benchmark) {
+        println("benchmarkDidFail")
+    }
+    
+    func benchmarkDidSucceed(benchmark: Benchmark) {
+        println("benchmarkDidSucceed")
+        println("benchmark result: " + benchmark.result)
     }
 
 }
