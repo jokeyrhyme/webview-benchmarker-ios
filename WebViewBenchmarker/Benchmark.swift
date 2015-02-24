@@ -11,7 +11,6 @@ import UIKit
 import WebKit
 
 class Benchmark: NSObject, UIWebViewDelegate {
-    private var url: String = "https://google.com/"
     private var webView: UIWebView
     
     init(webView: UIWebView) {
@@ -19,7 +18,8 @@ class Benchmark: NSObject, UIWebViewDelegate {
     }
     
     func start() {
-        var request = NSURLRequest(URL: NSURL(string: self.url)!)
+        var url: String = "https://google.com/"
+        var request = NSURLRequest(URL: NSURL(string: url)!)
         self.webView.loadRequest(request)
     }
     
@@ -40,12 +40,20 @@ class Benchmark: NSObject, UIWebViewDelegate {
 
     func webViewDidFinishLoad(webView: UIWebView) {
         println("webViewDidFinishLoad")
-        self.isComplete()
+        
+        let delay = 3.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.isComplete()
+        }
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
         println("webViewDidStartLoad")
     }
     
+}
+
+protocol BenchmarkProtocol {
 }
 

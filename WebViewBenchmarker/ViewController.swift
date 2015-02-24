@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.benchmark = Benchmark(webView: self.webView!)
+        self.benchmark = HTML5Test(webView: self.webView!)
         self.webView!.delegate = self
         self.benchmark!.start()
     }

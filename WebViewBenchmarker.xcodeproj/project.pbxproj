@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E49F98BC1A9BFBBC005A168A /* HTML5Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */; };
 		E4AA35021A9AC02500FD0D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA35011A9AC02500FD0D90 /* AppDelegate.swift */; };
 		E4AA35041A9AC02500FD0D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA35031A9AC02500FD0D90 /* ViewController.swift */; };
 		E4AA35071A9AC02500FD0D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AA35051A9AC02500FD0D90 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTML5Test.swift; sourceTree = "<group>"; };
 		E4AA34FC1A9AC02500FD0D90 /* WebViewBenchmarker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewBenchmarker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AA35001A9AC02500FD0D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4AA35011A9AC02500FD0D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E49F98BA1A9BFBA8005A168A /* Benchmarks */ = {
+			isa = PBXGroup;
+			children = (
+				E49F98BB1A9BFBBC005A168A /* HTML5Test.swift */,
+			);
+			path = Benchmarks;
+			sourceTree = "<group>";
+		};
 		E4AA34F31A9AC02500FD0D90 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		E4AA34FE1A9AC02500FD0D90 /* WebViewBenchmarker */ = {
 			isa = PBXGroup;
 			children = (
+				E49F98BA1A9BFBA8005A168A /* Benchmarks */,
 				E4AA35011A9AC02500FD0D90 /* AppDelegate.swift */,
 				E4AA35031A9AC02500FD0D90 /* ViewController.swift */,
 				E4AA35051A9AC02500FD0D90 /* Main.storyboard */,
@@ -211,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49F98BC1A9BFBBC005A168A /* HTML5Test.swift in Sources */,
 				E4AA35041A9AC02500FD0D90 /* ViewController.swift in Sources */,
 				E4AA35221A9AC91000FD0D90 /* Benchmark.swift in Sources */,
 				E4AA35021A9AC02500FD0D90 /* AppDelegate.swift in Sources */,
@@ -399,6 +411,7 @@
 				E4AA351D1A9AC02500FD0D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4AA351E1A9AC02500FD0D90 /* Build configuration list for PBXNativeTarget "WebViewBenchmarkerTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +420,7 @@
 				E4AA35201A9AC02500FD0D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
